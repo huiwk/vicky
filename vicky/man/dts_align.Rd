@@ -14,7 +14,7 @@ endid
 )
 }
 
-\argument{
+\arguments{
   
 \item{dat}{your drug data file, of \code{data.frame} structure.}
 
