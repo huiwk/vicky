@@ -1,12 +1,11 @@
 Package: vicky
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Canned code for own use 
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author: Vicki
+Maintainer: Vicki <1155063467@link.cuhk.edu.hk>
+Description: Canned code for data analysis
+License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
 Depends: R (>= 4.0)
