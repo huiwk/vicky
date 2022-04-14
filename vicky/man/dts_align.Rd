@@ -27,6 +27,8 @@ endid
 \item{endid}{Your "PrescriptionEndDate" variable name, can use quotes or apostrophe to quote the name. If name is exactly "Prescription End Date", can ignore it, that is optional}
 
 }
+
+\examples{
 \dontrun{
 # style 1
 # vicky::dts_algin(dat=Drug,type="Drug",refid="ReferenceKey",startid="Prescription Start Date",endid="Prescription End Date")
