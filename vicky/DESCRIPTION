@@ -8,7 +8,7 @@ Description: Canned code for data analysis
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
-Depends: R (>= 4.0)
+Depends: R (>= 4.0), rlang, tidyverse
 Imports:
   rlang (>= 1.0.2),
   tibble (>= 3.0.6),
