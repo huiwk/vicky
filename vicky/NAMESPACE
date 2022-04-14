@@ -1,1 +1,2 @@
-exportPattern("^[[:alpha:]]+")
+
+export("dts_algin")
