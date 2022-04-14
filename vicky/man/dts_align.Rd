@@ -10,7 +10,6 @@ startid,
 endid
 )
 }
-\arguments{
 \item{dat}{your drug data file, of \code{data.frame} structure.}
 \item{type}{Element for by group smoothing, optional.}
 \item{refid}{Your "Refkey" variable name, can use quotes or apostrophe to quote the name. If name is exactly "Reference Key", can ignore it, that is optional}
