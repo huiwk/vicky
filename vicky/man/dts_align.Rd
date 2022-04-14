@@ -37,6 +37,5 @@ endid
 # style 3
 # vicky::dts_algin(dat=Drug,type="Drug")
 # style 4
-# vicky::dts_algin(dat=Drug)
-}
+# vicky::dts_algin(dat=Drug)}
 }
