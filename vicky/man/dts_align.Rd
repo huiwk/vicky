@@ -11,8 +11,8 @@ endid
 )
 }
 \arguments{
-\item{dat}{your drug data file, of \code{data.frame} structure.
-\item{type}{Element for by group smoothing, optional.
+\item{dat}{your drug data file, of \code{data.frame} structure.}
+\item{type}{Element for by group smoothing, optional.}
 \item{refid}{Your "Refkey" variable name, can use quotes or apostrophe to quote the name. If name is exactly "Reference Key", can ignore it, that is optional}
 \item{startid}{Your "PrescriptionStartDate" variable name, can use quotes or apostrophe to quote the name. If name is exactly "Prescription Start Date", can ignore it, that is optional}
 \item{endid}{Your "PrescriptionEndDate" variable name, can use quotes or apostrophe to quote the name. If name is exactly "Prescription End Date", can ignore it, that is optional}
@@ -26,4 +26,5 @@ endid
 # vicky::dts_algin(dat=Drug,type="Drug")
 # style 4
 # vicky::dts_algin(dat=Drug)
+}
 }
