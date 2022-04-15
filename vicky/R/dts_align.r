@@ -18,7 +18,7 @@
 #' # style 4
 #' # vicky::dts_algin(dat=Drug)}
 #' @export
-
+library(zoo)
 dts_align<-function (dat, type, refid = `Reference Key`, startid = `Prescription Start Date`, 
     endid = `Prescription End Date`) 
 {
