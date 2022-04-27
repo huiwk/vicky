@@ -20,6 +20,8 @@ Imports:
   haven (>= 2.5.0),
   janitor (>= 2.1.0),
   tools,
-  readxl (>= 1.4.0)
+  readxl (>= 1.4.0),
+  data.table (>= 1.14.2),
+  arrow (>= 7.0.0)
   
 RoxygenNote: 7.1.1
