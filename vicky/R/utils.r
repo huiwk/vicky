@@ -1,6 +1,6 @@
 `%clip%`<-function(){
-  x<-gsub('\"',"",readClipboard(raw=F))
-  #rstudioapi::insertText(paste(x,"\n"))
+  x <- gsub(r"(\\)", "/", readClipboard(raw = F))
+  rstudioapi::insertText(paste0(x,"\n"))
   x
  }
  saveCohort<-function(cohort,fp){
