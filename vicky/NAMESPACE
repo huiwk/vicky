@@ -1,1 +1,4 @@
 export(dts_align)
+export(clean_xlsheet)
+export(clean_xlfile)
+export(opener)
