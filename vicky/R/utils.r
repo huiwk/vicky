@@ -1,7 +1,6 @@
 `%clip%`<-function(){
   x <- gsub(r"(\\)", "/", readClipboard(raw = F))
   rstudioapi::insertText(paste0(x,"\n"))
-  x
  }
  saveCohort<-function(cohort,fp){
   cohort%>%fwrite(paste0(fp,"\\cohort_",format(Sys.time(),"%d%m%Y"),'.csv'))
