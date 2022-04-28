@@ -23,5 +23,4 @@ Imports:
   readxl (>= 1.4.0),
   data.table (>= 1.14.2),
   arrow (>= 7.0.0)
-  
 RoxygenNote: 7.1.1
