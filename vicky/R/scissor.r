@@ -1,5 +1,6 @@
 
-scissor<-function(fp,RefkeyIDthread1="Reference",RefkeyIDthread2="Key",IDvars=data(IDvars),out_fp=getwd(),milliseconds=6){
+scissor<-function(fp,RefkeyIDthread1="Reference",RefkeyIDthread2="Key",IDvars=list(Lab=c("LIS"),Med=c("Disp","Pres"),Dx=c("diag"),
+  Px=c("proc"),Demo=c("birth","death","sex")),out_fp=getwd(),milliseconds=6){
   options(digits.secs=milliseconds)
   dat<-read_parquet(fp)%>%mutate_all(as.character)
   if(!grepl(r"(/$)",out_fp)) {out_fp<-paste0(out_fp,r"(/)",collapse="|")}
