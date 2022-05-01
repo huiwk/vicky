@@ -10,7 +10,7 @@ scissor<-function(fp,RefkeyIDthread1="Reference",RefkeyIDthread2="Key",IDvars=li
          {if(length(.)>0) select(dat,all_of(Refkeypos),min(.):ncol(dat))%>%
             { dat<-.
               datnames<-.y
-              if (dim(dat)[1]>0) .%>%write_parquet(paste0(out_fp,datnames,"/",format(Sys.time(), "%Y%m%d_%H%M%OS"),".parquet"))
+              if (dim(dat)[1]>0) dat%>%write_parquet(paste0(out_fp,datnames,"/",format(Sys.time(), "%Y%m%d_%H%M%OS"),".parquet"))
               } 
          })
 }
