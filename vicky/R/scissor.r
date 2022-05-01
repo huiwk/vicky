@@ -8,6 +8,9 @@ scissor<-function(fp,RefkeyIDthread1="Reference",RefkeyIDthread2="Key",IDvars=li
   map(names(IDvars),~dir.create(paste0(out_fp,.x),showWarnings=FALSE))
   map2(IDvars,names(IDvars),~grep(paste0(.x,collapse="|"),names(dat),ignore.case=TRUE)%>%
          {if(length(.)>0) select(dat,all_of(Refkeypos),min(.):ncol(dat))%>%
-            {if (dim(.)[1]>0) .%>%write_parquet(paste0(out_fp,.y,"/",format(Sys.time(), "%Y%m%d_%H%M%OS"),".parquet"))} 
+            { dat<-.
+              datnames<-.y
+              if (dim(dat)[1]>0) .%>%write_parquet(paste0(out_fp,datnames,"/",format(Sys.time(), "%Y%m%d_%H%M%OS"),".parquet"))
+              } 
          })
 }
