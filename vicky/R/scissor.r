@@ -9,7 +9,7 @@ scissor<-function(fp,RefkeyIDthread1="Reference",RefkeyIDthread2="Key",IDvars=li
   map2(IDvars,names(IDvars),~grep(paste0(.x,collapse="|"),names(dat),ignore.case=TRUE)%>%
          {if(length(.)>0) {tmp<-select(dat,all_of(Refkeypos),min(.):ncol(dat))
          if (dim(tmp)[1]>0&as.parquet==TRUE) tmp%>%write_parquet(paste0(out_fp,.y,"/",format(Sys.time(), "%Y%m%d_%H%M%OS"),".parquet"))
-         if (dim(tmp)[1]>0&as.parquet==FALSE) tmp%>%write_parquet(paste0(out_fp,.y,"/",format(Sys.time(), "%Y%m%d_%H%M%OS"),".csv"))
+         if (dim(tmp)[1]>0&as.parquet==FALSE) tmp%>%fwrite(paste0(out_fp,.y,"/",format(Sys.time(), "%Y%m%d_%H%M%OS"),".csv"))
          }
          } 
   )
