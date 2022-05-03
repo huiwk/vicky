@@ -37,5 +37,6 @@ clean_xlfile<-function(dfpath,keywords){
 opener<-function(fp,keywords="Reference Key",as.character=TRUE){
   if(tools::file_ext(fp)=="sav") {read_sav(fp)%>%name_cleaner%>%{if (as.character==TRUE&!is.null(.)) mutate_all(.,~as.character(.x)) else .}}
   else if(tools::file_ext(fp)=="xlsx") {clean_xlfile(fp,keywords)%>%{if (as.character==TRUE&!is.null(.)) mutate_all(.,~as.character(.x)) else .}}
+  else if(tools::file_ext(fp)=="csv") {fread(fp)%>%{if (as.character==TRUE&!is.null(.)) mutate_all(.,~as.character(.x)) else .}}                                      
   else NULL
 }
