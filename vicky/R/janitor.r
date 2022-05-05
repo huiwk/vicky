@@ -25,6 +25,10 @@ clean_xlsheet<-function(dfpath,sheet,keywords){
         {if(length(.)>0) subset_df(tmp,.,0,rev=TRUE) else tmp}
     }
 }
+clean_xml<-function(dfpath){
+read_html(dfpath)%>%xml_find_all(.,"//table")%>%.[3]%>%html_table()%>%data.frame
+}  
+  
 name_cleaner<-function(dat){
   colname<-names(dat)
   dat%>%set_names(gsub("[^[:alnum:]]","",colname))
@@ -37,6 +41,7 @@ clean_xlfile<-function(dfpath,keywords){
 opener<-function(fp,keywords="Reference Key",as.character=TRUE){
   if(tools::file_ext(fp)=="sav") {read_sav(fp)%>%name_cleaner%>%{if (as.character==TRUE&!is.null(.)) mutate_all(.,~as.character(.x)) else .}}
   else if(tools::file_ext(fp)=="xlsx") {clean_xlfile(fp,keywords)%>%{if (as.character==TRUE&!is.null(.)) mutate_all(.,~as.character(.x)) else .}}
-  else if(tools::file_ext(fp)=="csv") {fread(fp)%>%{if (as.character==TRUE&!is.null(.)) mutate_all(.,~as.character(.x)) else .}}                                      
+  else if(tools::file_ext(fp)=="csv") {fread(fp)%>%{if (as.character==TRUE&!is.null(.)) mutate_all(.,~as.character(.x)) else .}}
+  else if(tools::file_ext(fp)=="xls") {clean_xml(fp)%>%{if (as.character==TRUE&!is.null(.)) mutate_all(.,~as.character(.x)) else .}}                                     
   else NULL
 }
