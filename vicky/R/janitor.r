@@ -16,7 +16,7 @@ clean_xlsheet<-function(dfpath,sheet,keywords){
   }%>%{
     tmp<-.
     names<-tmp[1,]%>%as.character%>%make.unique
-    tmp%>%set_names(names)
+    tmp[-1,]%>%set_names(names)
   }%>%subset(.,select=which(!duplicated(names(.))))%>%
     {
       {.->tmp}%>%
