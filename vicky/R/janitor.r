@@ -13,8 +13,11 @@ clean_xlsheet<-function(dfpath,sheet,keywords){
     minrow<-min(.[,"row"])
     mincol<-min(.[,"col"])
     subset_df(df,minrow,mincol)
-  }%>%janitor::row_to_names(row_number=1)%>%
-    subset(.,select=which(!duplicated(names(.))))%>%
+  }%>%{
+    tmp<-.
+    names<-tmp[1,]%>%as.character%>%make.unique
+    tmp%>%set_names(names)
+  }%>%subset(.,select=which(!duplicated(names(.))))%>%
     {
       {.->tmp}%>%
         find_re()%>%
