@@ -12,3 +12,4 @@ readCohort<-function(path)
   files=rownames(details)
   cohort<<-fread(files[1])%>%tibble%>%mutate_all(as.character)
 }
+DefineX<-function(name){assign(name,NULL,envir=.GlobalEnv)}
