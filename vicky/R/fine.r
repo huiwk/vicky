@@ -14,3 +14,18 @@ scissor<-function(fp,RefkeyIDthread1="Reference",RefkeyIDthread2="Key",IDvars=li
          } 
   )
 }
+
+
+cutter<-function(dat,RefkeyIDthread1 = "Reference", RefkeyIDthread2 = "Key", 
+                 IDvars = list(Lab = c("LIS"), Med = c("Disp","Pres"), 
+                               Dx = c("diag"), Px = c("proc"), 
+                               Demo = c("birth", "death", "sex"))){
+
+    Refkeypos <- grep(paste0(RefkeyIDthread1, ".*", RefkeyIDthread2),names(dat), ignore.case = TRUE)%>%
+      { if (length(.) > 0) . else 0}
+    map2(IDvars, names(IDvars), 
+         ~grep(paste0(.x, collapse = "|"),names(dat), ignore.case = TRUE) %>% 
+           {if (length(.) > 0) {
+             tmp <- select(dat, all_of(Refkeypos), min(.):ncol(dat))
+           }})
+}
