@@ -18,6 +18,6 @@ sticker<-function(dat,var,outvar="Paste",is.numeric=TRUE){
   dat%>%{
     tmp<-.
     if(is.numeric) {tmp%>%mutate(!!outvar:=coalesce(!!!select(tmp,var)))}
-    else {unite(tmp,!!outvar,var,remove=FALSE)}
+    else {unite(tmp,!!outvar,var,remove=FALSE,sep=" ")}
   }
 }
