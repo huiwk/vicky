@@ -14,10 +14,10 @@ readCohort<-function(path)
 }
 DefineX<-function(name){map(name,~assign(.x,NULL,envir=.GlobalEnv))}
 WipeX<-function(namelist){rm(list=namelist,envir=.GlobalEnv)}
-sticker<-function(dat,var,outvar="Paste",is.numeric=TRUE){
+sticker<-function(dat,var,outvar="Paste",is.numeric=TRUE,invert=FALSE){
   dat%>%{
     tmp<-.
-    if(is.numeric) {tmp%>%mutate(!!outvar:=coalesce(!!!select(tmp,var)))}
-    else {unite(tmp,!!outvar,var,remove=FALSE,sep=" ")}
+    if(is.numeric) {tmp%>%{if(invert) mutate(!!outvar:=coalesce(!!!select(tmp,-var))) else mutate(!!outvar:=coalesce(!!!select(tmp,var)))}}
+    else {{if(invert) unite(tmp,!!outvar,-var,remove=FALSE,sep=" ") else unite(tmp,!!outvar,var,remove=FALSE,sep=" ")}}
   }
 }
