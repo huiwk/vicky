@@ -21,3 +21,11 @@ sticker<-function(dat,var,outvar="Paste",is.numeric=TRUE,invert=FALSE){
     else {{if(invert) unite(tmp,!!outvar,-var,remove=FALSE,sep=" ") else unite(tmp,!!outvar,var,remove=FALSE,sep=" ")}}
   }
 }
+IDvarEncoder<-function(fp,groupvar,outvar="Paste"){
+  groupvar<-ensym(groupvar)
+  outvar<-ensym(outvar)
+  dat<-if(is.character(fp)) {opener(fp)%>%mutate_all(as.character)} else if (is.data.frame(fp)) fp else NULL
+  dat<-sticker(dat,groupvar,outvar,is.numeric=FALSE,invert=TRUE)
+  dat%>%by(.,dat[[groupvar]],identity)%>%map(~.x%>%select(outvar)%>%unlist(use.names=FALSE)%>%unique%>%
+                                               gsub(pattern = "([[:punct:]])",replacement="\\\\\\1",.))
+}
