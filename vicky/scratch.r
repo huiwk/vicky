@@ -11,9 +11,6 @@ lib()
 
 # -> categorical variable ----------------------------------------------------
 
-max.categories<-10
-cohort%>%mutate_all(as.factor)%>%map(~.x%>%levels)
-
 is.categorical.variable<-function(vec,max.categories=10){
   vec%>%{if (!is.data.frame(vec)) tibble(vec=.) else .}%>%
     mutate_all(as.factor)%>%map_lgl(~.x%>%levels%>%length%>%{.>0&.<=max.categories})
@@ -116,6 +113,10 @@ weighted.cnt.pct<-function(vec,flag=is.categorical.variable(vec),weight=NULL,fie
 
 
 # test case ---------------------------------------------------------------
+
+max.categories<-10
 cohort<-fread("E:/matched_ch_adult_wv14_0518_rt2.csv")%>%select(contains(c("baseline","weights"))&!contains("date"))%>%tibble
+cohort%>%mutate_all(as.factor)%>%map(~.x%>%levels)
+
 weighted.mean.sd(cohort,weight=cohort$weights)
 weighted.inter.quartile.range(cohort[,1:2],c(1,1),weight=cohort$weights)
